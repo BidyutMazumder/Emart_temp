@@ -1,3 +1,4 @@
+import 'package:emart_temp/Srceens/home_page.dart';
 import 'package:emart_temp/Srceens/registration_page.dart';
 import 'package:emart_temp/utils/icon.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +58,9 @@ class _LoginState extends State<Login> {
             ),
             SizedBox(height: 10,),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (Context) => Home()));
+              },
               child: Text("Login"),
             ),
             SizedBox(height: 5,),
