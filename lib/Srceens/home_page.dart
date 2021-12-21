@@ -1,6 +1,8 @@
+import 'package:emart_temp/Srceens/details_page.dart';
 import 'package:emart_temp/utils/box_style.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:emart_temp/model/model.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -15,9 +17,9 @@ class _HomeState extends State<Home> {
     var S_height = MediaQuery.of(context).size.height;
     var S_width = MediaQuery.of(context).size.width;
 
-    final List<Map> myProducts =
-    List.generate(10, (index) => {"id": index, "name": "Product $index"})
-        .toList();
+    /*  final List<Map> myProducts =
+        List.generate(10, (index) => {"id": index, "name": "Product $index"})
+            .toList();*/
 
     return Scaffold(
       body: SafeArea(
@@ -52,7 +54,8 @@ class _HomeState extends State<Home> {
                                 child: Text(
                                   "SHOPIN",
                                   style: TextStyle(
-                                      fontSize: 25, fontWeight: FontWeight.bold),
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold),
                                 )),
                             SizedBox(
                               width: 10,
@@ -167,7 +170,8 @@ class _HomeState extends State<Home> {
                                 Text(
                                   "Null",
                                   style: TextStyle(
-                                      fontSize: 12, fontWeight: FontWeight.bold),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold),
                                 )
                               ],
                             ),
@@ -186,7 +190,8 @@ class _HomeState extends State<Home> {
                                 Text(
                                   "Null",
                                   style: TextStyle(
-                                      fontSize: 12, fontWeight: FontWeight.bold),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold),
                                 )
                               ],
                             ),
@@ -205,7 +210,8 @@ class _HomeState extends State<Home> {
                                 Text(
                                   "Null",
                                   style: TextStyle(
-                                      fontSize: 12, fontWeight: FontWeight.bold),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold),
                                 )
                               ],
                             ),
@@ -224,7 +230,8 @@ class _HomeState extends State<Home> {
                                 Text(
                                   "Null",
                                   style: TextStyle(
-                                      fontSize: 12, fontWeight: FontWeight.bold),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold),
                                 )
                               ],
                             ),
@@ -273,42 +280,88 @@ class _HomeState extends State<Home> {
                           width: S_width * 0.9,
                           child: GridView.builder(
                             gridDelegate:
-                            SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 4.0,
-                                mainAxisSpacing: 4.0,
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 4.0,
+                              mainAxisSpacing: 4.0,
                             ),
-                            itemCount: myProducts.length,
+                            itemCount: products.length,
                             itemBuilder: (BuildContext ctx, index) {
                               return Container(
-                                alignment: Alignment.center,
-                                child: Column(
-                                  children: [
-                                    Stack(
-                                      children: [
-                                        Container(
-                                            height: 100,
-                                            width: 250,
-                                            color: Colors.blueGrey[50],
-                                            child: Center(
-                                                child: Text(
-                                                    myProducts[index]["name"]))),
-                                        Positioned(
-                                          top: 0,
-                                          right: 0,
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: Icon(Icons.favorite),
-                                          ),),
-                                      ],
-                                    ),
-                                    Text("230 \$"),
-                                    ElevatedButton(
-                                        onPressed: () {}, child: Text("Cart"))
-                                  ],
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Stack(
+                                        children: [
+                                          GestureDetector(
+                                            onTap:(){
+                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductDetails()));
+                                            },
+                                            child: Container(
+                                              height: 60,
+                                              //width: ,
+                                              child: Center(
+                                                child: Text("Images"),
+                                              ),
+                                              decoration: BoxDecoration(
+                                                color: Colors.blueGrey[50],
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            top: 0,
+                                            right: 0,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(10.0),
+                                              child: Icon(Icons.favorite),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Text(
+                                        "${products[index].name}",
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Container(
+                                        width: S_width * 0.15,
+                                        child: Center(
+                                          child: Text(
+                                            "${products[index].color}",
+                                          ),
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey,
+                                          borderRadius: BorderRadius.circular(6),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: S_height*.05,
+                                        //height: 25,
+
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text("230 \$"),
+                                            TextButton(
+                                              onPressed: () {},
+                                              child: Icon(Icons.add,color: Colors.black,),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 decoration: BoxDecoration(
-                                  color: Colors.amber,
+                                  color: Colors.white,
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                               );

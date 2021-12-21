@@ -6,7 +6,8 @@ class ProductData{
   String? des;
   String? img;
   bool? is_fav;
-  ProductData({required this.size, required this.name, required this.des, required this.img, required this.is_fav});
+  String? color;
+  ProductData({required this.size, required this.name, required this.des, required this.img, required this.is_fav, required this.color});
 }
 
 List<ProductData> products = [
@@ -16,6 +17,7 @@ List<ProductData> products = [
     des: "Bangladeshi Shoes",
     img: "",
     is_fav: false,
+    color: "7 Color"
   ),
   ProductData(
     size: 7,
@@ -23,6 +25,7 @@ List<ProductData> products = [
     des: "Bangladeshi Shoes",
     img: "",
     is_fav: false,
+    color: "6 Color",
   ),
   ProductData(
     size: 9,
@@ -30,5 +33,6 @@ List<ProductData> products = [
     des: "Bangladeshi Shoes",
     img: "",
     is_fav: false,
+    color: "3 Color",
   ),
 ];
